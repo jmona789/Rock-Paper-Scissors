@@ -7,7 +7,7 @@ $(document).ready(function() {
   var round = 0;
   $("#paper").hide();
   $("#scissors").hide();
-  $(".animation").hide()
+  $(".animation").hide();
 
   setTimeout(entrancePaper, 300);
   function entrancePaper(){
@@ -28,10 +28,10 @@ $(document).ready(function() {
 
   //Changes animation on mouse enter and changes back on mouse out
   $(".shown").on("mouseenter", function(){
-    $(this).toggleClass("tossing")
+    $(this).toggleClass("tossing");
   });
   $(".shown").on("mouseleave", function(){
-    $(this).toggleClass("tossing")
+    $(this).toggleClass("tossing");
   });
 
   function computerTurn(ranNum){
