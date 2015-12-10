@@ -2,22 +2,27 @@
 <html>
 <head>
   <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <a href="#" id="rock">Rock</a>
+      <div class="col-md-4 text-center">
+        <a href="#"><i id="rock" class="rpsIcons shown fa fa-hand-rock-o fa-5x bigEntrance"></i></a>
       </div>
-      <div class="col-md-4">
-        <a href="#" id="paper">Paper</a>
+      <div class="col-md-4 text-center">
+        <a href="#"><i class="rpsIcons fa fa-hand-rock-o fa-5x animation slideRight"></i><i id="paper" class="rpsIcons shown fa fa-hand-paper-o fa-5x bigEntrance"></i><i class="rpsIcons fa fa-hand-scissors-o fa-5x animation slideLeft"></i></a>
       </div>
-      <div class="col-md-4">
-        <a href="#" id="scissors">Scissors</a>
+      <div class="col-md-4 text-center">
+        <a href="#"><i id="scissors" class="rpsIcons shown fa fa-hand-scissors-o fa-5x bigEntrance"></i></a>
       </div>
     </div>
   </div>
+  <!-- Win Model -->
+  <!-- Loss Model -->
+  <!-- Tie Model -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </body>
