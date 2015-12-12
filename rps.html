@@ -9,15 +9,44 @@
 <body>
   <div class="container">
     <div class="row">
+      <div class="col-md-4">
+        <h2 id="roundNum"></h2>
+      </div>
+      <div class="col-md-4">
+        <h2>Your Score: <span id="playerScore">0</span></h2>
+      </div>
+      <div class="col-md-4">
+        <h2>Computer Score: <span id="computerScore">0</span></h2>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4 text-center">
-        <a href="#"><i id="rock" class="rpsIcons shown fa fa-hand-rock-o fa-5x bigEntrance"></i></a>
+        <a href="#" id="Rock"><i id="rockIcon" class="rpsIcons shown fa fa-hand-rock-o fa-5x bigEntrance"></i></a>
+        <i id="playerChoiceRock" class="rpsIcons playerChoice fa fa-hand-rock-o fa-5x expandUp"></i>
+        <i id="playerChoicePaper" class="rpsIcons playerChoice fa fa-hand-paper-o fa-5x expandUp"></i>
+        <i id="playerChoiceScissors" class="rpsIcons playerChoice fa fa-hand-scissors-o fa-5x expandUp"></i>
       </div>
       <div class="col-md-4 text-center">
-        <a href="#"><i class="rpsIcons fa fa-hand-rock-o fa-5x animation slideRight"></i><i id="paper" class="rpsIcons shown fa fa-hand-paper-o fa-5x bigEntrance"></i><i class="rpsIcons fa fa-hand-scissors-o fa-5x animation slideLeft"></i></a>
+        <i id="animatedRock" class="rpsIcons fa fa-hand-rock-o fa-5x animation slideRight"></i>
+        <a href="#" id="Paper"><i id="paperIcon" class="rpsIcons shown fa fa-hand-paper-o fa-5x bigEntrance"></i></a>
+        <i id="animatedScissors" class="rpsIcons fa fa-hand-scissors-o fa-5x animation slideLeft"></i>
       </div>
       <div class="col-md-4 text-center">
-        <a href="#"><i id="scissors" class="rpsIcons shown fa fa-hand-scissors-o fa-5x bigEntrance"></i></a>
+        <a href="#" id="Scissors"><i id="scissorsIcon" class="rpsIcons shown fa fa-hand-scissors-o fa-5x bigEntrance"></i></a>
+        <i id="computerChoiceRock" class="rpsIcons playerChoice fa fa-hand-rock-o fa-5x expandUp"></i>
+        <i id="computerChoicePaper" class="rpsIcons playerChoice fa fa-hand-paper-o fa-5x expandUp"></i>
+        <i id="computerChoiceScissors" class="rpsIcons playerChoice fa fa-hand-scissors-o fa-5x expandUp"></i>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="choiceText">Your Choice</h2>
+      </div>
+      <div class="col-md-4">
+        <h2 class="winLoseText"></h2>  
+      </div>
+      <div class="col-md-4">
+        <h2 class="choiceText">Computer Choice</h2>
     </div>
   </div>
   <!-- Win Model -->

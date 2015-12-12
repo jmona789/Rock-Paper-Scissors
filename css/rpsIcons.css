@@ -7,3 +7,13 @@
 .rpsIcons:hover{
   color:black;
 }
+
+#animatedRock{
+  position: relative;
+  left: 60px;
+}
+
+#animatedScissors{
+  position: relative;
+    right: 60px;
+}
