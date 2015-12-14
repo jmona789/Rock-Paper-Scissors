@@ -11,7 +11,17 @@
     <div class="row">
       <div class="col-md-4">
         <h2 id="roundNum"></h2>
-        <button class="btn btn-primary playBtn" data-status="off"><i class="fa fa-play-circle-o"></i> Play</button>
+        <select id="roundPicker">
+          <option value ="select" disabled selected>Select a Number Of Rounds</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="7">7</option>
+          <option value="9">9</option>
+        </select>
+        <button class="btn btn-primary playBtn" data-status="off"><i class="fa fa-play-circle-o"></i> Play</button><button class="btn btn-primary playAgainBtn" data-status="off"><i class="fa fa-play-circle-o"></i> Play Again</button>
+        <div class="alert alert-danger roundAlert" role="alert">
+          Please Select a Number Of Rounds
+        </div>
       </div>
       <div class="col-md-4">
         <h2>Your Score: <span id="playerScore">0</span></h2>

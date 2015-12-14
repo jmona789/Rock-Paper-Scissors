@@ -13,6 +13,8 @@ $(document).ready(function() {
   $(".winLoseText").hide();
   $("#roundNum").html("Round: "+round);
   $(".face").hide();
+  $(".roundAlert").hide();
+  $(".playAgainBtn").hide();
 
   setTimeout(entrancePaper, 300);
   function entrancePaper(){
@@ -56,30 +58,46 @@ $(document).ready(function() {
     computerChoiceId = "#computerChoice"+computerChoice;
     $(playerChoiceId).delay(500).show(0);
     $(".choiceText").delay(500).fadeIn("slow");
-    $(playerChoiceId).delay(1600).fadeOut("slow");
-    $(".choiceText").delay(1000).fadeOut("slow");
-    $(computerChoiceId).delay(500).show(0);
-    $(computerChoiceId).delay(1600).fadeOut("slow");
+    $(playerChoiceId).delay(4300).fadeOut("slow");
+    $(".choiceText").delay(3800).fadeOut("slow");
+    $(computerChoiceId).delay(1700).show(0);
+    $(computerChoiceId).delay(3300).fadeOut("slow");
     animateIn();
   }
 
   function animateIn(){
-    $("#rockIcon").delay(2700).fadeIn("slow");
-    $("#paperIcon").delay(2100).fadeIn("slow");
-    $("#scissorsIcon").delay(2700).fadeIn("slow");
+    $("#rockIcon").delay(5500).fadeIn("slow");
+    $("#paperIcon").delay(4900).fadeIn("slow");
+    $("#scissorsIcon").delay(5500).fadeIn("slow");
   }
 
   $(".playBtn").on("click", function(){
-    if ($(this).attr("data-status") === "off"){
-      $(this).toggleClass("btn-primary btn-danger");
-      $(this).html("<i class='fa fa-pause-circle-o'></i> Pause");
-      $(this).attr("data-status", "on");
+    roundNum();
+    if (roundNum()=== undefined){
+      return;
     }else{
-      $(this).toggleClass("btn-primary btn-danger");
-      $(this).html("<i class='fa fa-play-circle-o'></i> Play");
-      $(this).attr("data-status", "off");
+      if ($(this).attr("data-status") === "off"){
+        $(this).toggleClass("btn-primary btn-danger");
+        $(this).html("<i class='fa fa-pause-circle-o'></i> Pause");
+        $(this).attr("data-status", "on");
+      }else{
+        $(this).toggleClass("btn-primary btn-danger");
+        $(this).html("<i class='fa fa-play-circle-o'></i> Play");
+        $(this).attr("data-status", "off");
+      }
     }
   })
+
+  function roundNum(){
+    if ($("#roundPicker option:selected").text() === "Select a Number Of Rounds"){
+      $(".roundAlert").slideDown();
+      return;
+    }else{
+      $(".roundAlert").hide();
+      var rounds = $("#roundPicker option:selected").text();
+      return parseInt(rounds);
+    }
+  }
 
   $("a").on("click", function(){
     if ($(".playBtn").attr("data-status")=== "on"){
@@ -88,63 +106,63 @@ $(document).ready(function() {
     computerchoice = computerTurn(ranNum);
     animateOut();
     animateChoices(playerChoice, computerChoice);
-      if (round <= 5){
+      if (round <= roundNum()){
         round ++;
         $("#roundNum").html("Round: "+round);
         if (playerChoice === computerChoice){
           round --;
           $("#roundNum").html("Round: "+round);
-          $(".winLoseText").html("Tie, try that round again!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(1000).fadeOut("slow");
-          $("#tieFace").delay(500).show(0);
-          $("#tieFace").delay(1600).fadeOut("slow");
+          $(".winLoseText").html("Tie, try that round again!").delay(2000).fadeIn("slow");
+          $(".winLoseText").delay(2300).fadeOut("slow");
+          $("#tieFace").delay(2000).show(0);
+          $("#tieFace").delay(2900).fadeOut("slow");
           GameOverCheck();
         }else if(playerChoice === "Rock"){
           if (computerChoice === "Paper"){
             computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#lossFace").delay(500).show(0);
-            $("#lossFace").delay(1600).fadeOut("slow");
+            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#lossFace").delay(2000).show(0);
+            $("#lossFace").delay(2900).fadeOut("slow");
             GameOverCheck();
           }else{
             playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#winFace").delay(500).show(0);
-            $("#winFace").delay(1600).fadeOut("slow");
+            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#winFace").delay(2000).show(0);
+            $("#winFace").delay(2900).fadeOut("slow");
             GameOverCheck();
           }
         }else if(playerChoice === "Paper"){
           if(computerChoice === "Scissors"){
             computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#lossFace").delay(500).show(0);
-            $("#lossFace").delay(1600).fadeOut("slow");         
+            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#lossFace").delay(2000).show(0);
+            $("#lossFace").delay(2900).fadeOut("slow");         
             GameOverCheck();
           }else{
             playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#winFace").delay(500).show(0);
-            $("#winFace").delay(1600).fadeOut("slow");
+            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#winFace").delay(2000).show(0);
+            $("#winFace").delay(2900).fadeOut("slow");
             GameOverCheck();
           }
         }else if(playerChoice === "Scissors"){
           if(computerChoice === "Rock"){
             computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#lossFace").delay(500).show(0);
-            $("#lossFace").delay(1600).fadeOut("slow");
+            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#lossFace").delay(2000).show(0);
+            $("#lossFace").delay(2900).fadeOut("slow");
             GameOverCheck();
           }else{
             playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-            $(".winLoseText").delay(1000).fadeOut("slow");
-            $("#winFace").delay(500).show(0);
-            $("#winFace").delay(1600).fadeOut("slow");
+            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+            $(".winLoseText").delay(2300).fadeOut("slow");
+            $("#winFace").delay(2000).show(0);
+            $("#winFace").delay(2900).fadeOut("slow");
             GameOverCheck();
           }
         }
@@ -152,24 +170,30 @@ $(document).ready(function() {
     }else{
       return;
     }
-    $("#playerScore").html(playerWins);
-    $("#computerScore").html(computerWins);
+    $(this).delay(2000).queue(function(n){
+      $("#playerScore").html(playerWins);
+      $("#computerScore").html(computerWins);
+      n();
+    })
   });
   
   function GameOverCheck(){
-    if (round === 6){
+    if (round === roundNum()+1){
     GameOver();
     }
   }
 
   function GameOver(){
-  round = "Game Over";
-  $("#roundNum").html("Round: "+round);
-  $(".playBtn").toggleClass("btn-primary btn-danger");
-  $(".playBtn").html("Play Again");
-  $(".playBtn").attr("data-status", "off");
+    round = "Game Over";
+    $("#roundNum").html("Round: "+round);
+    $(".playBtn").hide();
+    $(".playAgainBtn").show();
+    setTimeout(modal, 4500);
+  }
+    
+
+  function modal(){
     if (playerWins < computerWins){
-      console.log("Game Over, Player Loses")
       $("#lossModal").modal();
     }else{
       $("#winModal").modal();
@@ -177,11 +201,17 @@ $(document).ready(function() {
   }
 
   $(".playAgainBtn").on("click", function(){
-    var computerWins = 0;
-    var playerWins = 0;
-    var round = 1;
+    varReset();
+    $(".playAgainBtn").hide();
+    $(".playBtn").show();
+  })
+
+  function varReset(){
+    computerWins = 0;
+    playerWins = 0;
+    round = 1;
     $("#roundNum").html("Round: "+round);
     $("#playerScore").html(playerWins);
     $("#computerScore").html(computerWins);
-  })
+  }
 });
