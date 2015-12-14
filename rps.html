@@ -11,6 +11,7 @@
     <div class="row">
       <div class="col-md-4">
         <h2 id="roundNum"></h2>
+        <button class="btn btn-primary playBtn" data-status="off"><i class="fa fa-play-circle-o"></i> Play</button>
       </div>
       <div class="col-md-4">
         <h2>Your Score: <span id="playerScore">0</span></h2>
@@ -30,6 +31,9 @@
         <i id="animatedRock" class="rpsIcons fa fa-hand-rock-o fa-5x animation slideRight"></i>
         <a href="#" id="Paper"><i id="paperIcon" class="rpsIcons shown fa fa-hand-paper-o fa-5x bigEntrance"></i></a>
         <i id="animatedScissors" class="rpsIcons fa fa-hand-scissors-o fa-5x animation slideLeft"></i>
+        <i id="winFace" class="fa fa-smile-o face fadeIn"></i>
+        <i id="tieFace" class="fa fa-meh-o face fadeIn"></i>
+        <i id="lossFace" class="fa fa-frown-o face fadeIn"></i>
       </div>
       <div class="col-md-4 text-center">
         <a href="#" id="Scissors"><i id="scissorsIcon" class="rpsIcons shown fa fa-hand-scissors-o fa-5x bigEntrance"></i></a>
@@ -50,9 +54,43 @@
     </div>
   </div>
   <!-- Win Model -->
+  <div class="modal fade bs-example-modal-sm" id="winModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">You Win!</h4>
+        </div>
+        <div class="modal-body text-center">
+          <i class="fa fa-smile-o modalFace"></i>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary playAgainBtn" data-dismiss="modal">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Loss Model -->
-  <!-- Tie Model -->
+  <div class="modal fade bs-example-modal-sm" id="lossModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">You Lose!</h4>
+        </div>
+        <div class="modal-body text-center">
+          <i class="fa fa-frown-o modalFace"></i>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary playAgainBtn" data-dismiss="modal">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

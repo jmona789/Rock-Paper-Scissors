@@ -12,6 +12,7 @@ $(document).ready(function() {
   $(".choiceText").hide();
   $(".winLoseText").hide();
   $("#roundNum").html("Round: "+round);
+  $(".face").hide();
 
   setTimeout(entrancePaper, 300);
   function entrancePaper(){
@@ -68,6 +69,18 @@ $(document).ready(function() {
     $("#scissorsIcon").delay(2700).fadeIn("slow");
   }
 
+  $(".playBtn").on("click", function(){
+    if ($(this).attr("data-status") === "off"){
+      $(this).toggleClass("btn-primary btn-danger");
+      $(this).html("<i class='fa fa-pause-circle-o'></i> Pause");
+      $(this).attr("data-status", "on");
+    }else{
+      $(this).toggleClass("btn-primary btn-danger");
+      $(this).html("<i class='fa fa-play-circle-o'></i> Play");
+      $(this).attr("data-status", "off");
+    }
+  })
+
   $("a").on("click", function(){
     playerChoice = $(this).attr("id");
     var ranNum = Math.floor(Math.random() * rps.length);
@@ -81,42 +94,56 @@ $(document).ready(function() {
         round --;
         $("#roundNum").html("Round: "+round);
         $(".winLoseText").html("Tie, try that round again!").delay(500).fadeIn("slow");
-        $(".winLoseText").delay(900).fadeOut("slow");
+        $(".winLoseText").delay(1000).fadeOut("slow");
+        $("#tieFace").delay(500).show(0);
+        $("#tieFace").delay(1600).fadeOut("slow");
         GameOverCheck();
       }else if(playerChoice === "Rock"){
         if (computerChoice === "Paper"){
           computerWins ++;
           $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#lossFace").delay(500).show(0);
+          $("#lossFace").delay(1600).fadeOut("slow");
           GameOverCheck();
         }else{
           playerWins++;
           $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#winFace").delay(500).show(0);
+          $("#winFace").delay(1600).fadeOut("slow");
           GameOverCheck();
         }
       }else if(playerChoice === "Paper"){
         if(computerChoice === "Scissors"){
           computerWins ++;
           $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#lossFace").delay(500).show(0);
+          $("#lossFace").delay(1600).fadeOut("slow");         
           GameOverCheck();
         }else{
           playerWins++;
           $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#winFace").delay(500).show(0);
+          $("#winFace").delay(1600).fadeOut("slow");
           GameOverCheck();
         }
       }else if(playerChoice === "Scissors"){
         if(computerChoice === "Rock"){
           computerWins ++;
           $(".winLoseText").html("Computer Wins This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#lossFace").delay(500).show(0);
+          $("#lossFace").delay(1600).fadeOut("slow");
           GameOverCheck();
         }else{
           playerWins++;
           $(".winLoseText").html("You Win This Round!").delay(500).fadeIn("slow");
-          $(".winLoseText").delay(900).fadeOut("slow");
+          $(".winLoseText").delay(1000).fadeOut("slow");
+          $("#winFace").delay(500).show(0);
+          $("#winFace").delay(1600).fadeOut("slow");
           GameOverCheck();
         }
       }
@@ -137,10 +164,19 @@ $(document).ready(function() {
   $("a").off();
     if (playerWins < computerWins){
       console.log("Game Over, Player Loses")
-    }else if(playerWins === computerWins){
-      console.log("Game Over, Tie");
+      $("#lossModal").modal();
     }else{
-      console.log("Game Over, Player Wins");
+      $("#winModal").modal();
     }
   }
+
+  $(".playAgainBtn").on("click", function(){
+    var computerWins = 0;
+    var playerWins = 0;
+    var round = 1;
+    $("#roundNum").html("Round: "+round);
+    $("#playerScore").html(playerWins);
+    $("#computerScore").html(computerWins);
+    $("a").on();
+  })
 });
