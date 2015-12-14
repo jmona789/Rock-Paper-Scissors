@@ -108,7 +108,10 @@ $(document).ready(function() {
     animateChoices(playerChoice, computerChoice);
       if (round <= roundNum()){
         round ++;
-        $("#roundNum").html("Round: "+round);
+        $(this).delay(5300).queue(function(n){
+          $("#roundNum").html("Round: "+round);
+          n();
+        })
         if (playerChoice === computerChoice){
           round --;
           $("#roundNum").html("Round: "+round);
