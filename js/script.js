@@ -187,8 +187,6 @@ $(document).ready(function() {
   }
 
   function GameOver(){
-    round = "Game Over";
-    $("#roundNum").html("Round: "+round);
     $(".playBtn").hide();
     $(".playAgainBtn").show();
     setTimeout(modal, 4500);
@@ -196,6 +194,8 @@ $(document).ready(function() {
     
 
   function modal(){
+    round = "Game Over";
+    $("#roundNum").html("Round: "+round);
     if (playerWins < computerWins){
       $("#lossModal").modal();
     }else{
