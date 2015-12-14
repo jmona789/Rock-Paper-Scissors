@@ -165,7 +165,9 @@ $(document).ready(function() {
   function GameOver(){
   round = "Game Over";
   $("#roundNum").html("Round: "+round);
-  $("a").off();
+  $(".playBtn").toggleClass("btn-primary btn-danger");
+  $(".playBtn").html("Play Again");
+  $(".playBtn").attr("data-status", "off");
     if (playerWins < computerWins){
       console.log("Game Over, Player Loses")
       $("#lossModal").modal();
@@ -181,6 +183,5 @@ $(document).ready(function() {
     $("#roundNum").html("Round: "+round);
     $("#playerScore").html(playerWins);
     $("#computerScore").html(computerWins);
-    $("a").on();
   })
 });
