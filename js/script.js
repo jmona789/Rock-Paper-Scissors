@@ -100,84 +100,89 @@ $(document).ready(function() {
   }
 
   $("a").on("click", function(){
-    if ($(".playBtn").attr("data-status")=== "on"){
-    playerChoice = $(this).attr("id");
-    var ranNum = Math.floor(Math.random() * rps.length);
-    computerchoice = computerTurn(ranNum);
-    animateOut();
-    animateChoices(playerChoice, computerChoice);
-      if (round <= roundNum()){
-        round ++;
-        $(this).delay(5300).queue(function(n){
-          $("#roundNum").html("Round: "+round);
-          n();
-        })
-        if (playerChoice === computerChoice){
-          round --;
-          $("#roundNum").html("Round: "+round);
-          $(".winLoseText").html("Tie, try that round again!").delay(2000).fadeIn("slow");
-          $(".winLoseText").delay(2300).fadeOut("slow");
-          $("#tieFace").delay(2000).show(0);
-          $("#tieFace").delay(2900).fadeOut("slow");
-          GameOverCheck();
-        }else if(playerChoice === "Rock"){
-          if (computerChoice === "Paper"){
-            computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+    if ($("#roundPicker option:selected").text() === "Select a Number Of Rounds"){
+      $(".roundAlert").slideDown();
+      return;
+    }else{
+        if ($(".playBtn").attr("data-status")=== "on"){
+        playerChoice = $(this).attr("id");
+        var ranNum = Math.floor(Math.random() * rps.length);
+        computerchoice = computerTurn(ranNum);
+        animateOut();
+        animateChoices(playerChoice, computerChoice);
+        if (round <= roundNum()){
+          round ++;
+          $(this).delay(5300).queue(function(n){
+            $("#roundNum").html("Round: "+round);
+            n();
+          })
+          if (playerChoice === computerChoice){
+            round --;
+            $("#roundNum").html("Round: "+round);
+            $(".winLoseText").html("Tie, try that round again!").delay(2000).fadeIn("slow");
             $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#lossFace").delay(2000).show(0);
-            $("#lossFace").delay(2900).fadeOut("slow");
+            $("#tieFace").delay(2000).show(0);
+            $("#tieFace").delay(2900).fadeOut("slow");
             GameOverCheck();
-          }else{
-            playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
-            $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#winFace").delay(2000).show(0);
-            $("#winFace").delay(2900).fadeOut("slow");
-            GameOverCheck();
-          }
-        }else if(playerChoice === "Paper"){
-          if(computerChoice === "Scissors"){
-            computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
-            $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#lossFace").delay(2000).show(0);
-            $("#lossFace").delay(2900).fadeOut("slow");         
-            GameOverCheck();
-          }else{
-            playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
-            $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#winFace").delay(2000).show(0);
-            $("#winFace").delay(2900).fadeOut("slow");
-            GameOverCheck();
-          }
-        }else if(playerChoice === "Scissors"){
-          if(computerChoice === "Rock"){
-            computerWins ++;
-            $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
-            $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#lossFace").delay(2000).show(0);
-            $("#lossFace").delay(2900).fadeOut("slow");
-            GameOverCheck();
-          }else{
-            playerWins++;
-            $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
-            $(".winLoseText").delay(2300).fadeOut("slow");
-            $("#winFace").delay(2000).show(0);
-            $("#winFace").delay(2900).fadeOut("slow");
-            GameOverCheck();
+          }else if(playerChoice === "Rock"){
+            if (computerChoice === "Paper"){
+              computerWins ++;
+              $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#lossFace").delay(2000).show(0);
+              $("#lossFace").delay(2900).fadeOut("slow");
+              GameOverCheck();
+            }else{
+              playerWins++;
+              $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#winFace").delay(2000).show(0);
+              $("#winFace").delay(2900).fadeOut("slow");
+              GameOverCheck();
+            }
+          }else if(playerChoice === "Paper"){
+            if(computerChoice === "Scissors"){
+              computerWins ++;
+              $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#lossFace").delay(2000).show(0);
+              $("#lossFace").delay(2900).fadeOut("slow");         
+              GameOverCheck();
+            }else{
+              playerWins++;
+              $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#winFace").delay(2000).show(0);
+              $("#winFace").delay(2900).fadeOut("slow");
+              GameOverCheck();
+            }
+          }else if(playerChoice === "Scissors"){
+            if(computerChoice === "Rock"){
+              computerWins ++;
+              $(".winLoseText").html("Computer Wins This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#lossFace").delay(2000).show(0);
+              $("#lossFace").delay(2900).fadeOut("slow");
+              GameOverCheck();
+            }else{
+              playerWins++;
+              $(".winLoseText").html("You Win This Round!").delay(2000).fadeIn("slow");
+              $(".winLoseText").delay(2300).fadeOut("slow");
+              $("#winFace").delay(2000).show(0);
+              $("#winFace").delay(2900).fadeOut("slow");
+              GameOverCheck();
+            }
           }
         }
+      }else{
+        return;
       }
-    }else{
-      return;
+      $(this).delay(2000).queue(function(n){
+        $("#playerScore").html(playerWins);
+        $("#computerScore").html(computerWins);
+        n();
+      })
     }
-    $(this).delay(2000).queue(function(n){
-      $("#playerScore").html(playerWins);
-      $("#computerScore").html(computerWins);
-      n();
-    })
   });
   
   function GameOverCheck(){
